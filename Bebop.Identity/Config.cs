@@ -40,7 +40,7 @@ namespace IdentityServer
                 {
                     ClientId = "wewantdoughnuts",
                     ClientName = "We Want Doughnuts",
-                    ClientUri = "http://localhost:3000",
+                    ClientUri = "https://localhost:3000",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     
@@ -48,11 +48,11 @@ namespace IdentityServer
 
                     RedirectUris =
                     {                        
-                        "http://localhost:3000/signin-oidc",                        
+                        "https://localhost:3000/signin-oidc",                        
                     },
 
-                    PostLogoutRedirectUris = { "http://localhost:3000/signout-oidc" },
-                    AllowedCorsOrigins = { "http://localhost:3000" },
+                    PostLogoutRedirectUris = { "https://localhost:3000/signout-oidc" },
+                    AllowedCorsOrigins = { "https://localhost:3000" },
 
                     AllowedScopes = new List<string>
                     {

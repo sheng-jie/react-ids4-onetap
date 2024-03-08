@@ -4,10 +4,10 @@ import { storeUserError, storeUser } from '../actions/authActions'
 const config = {
   authority: "https://localhost:5001",
   client_id: "wewantdoughnuts",
-  redirect_uri: "http://localhost:3000/signin-oidc",
-  response_type: "id_token token",
-  scope: "openid profile doughnutapi",
-  post_logout_redirect_uri: "http://localhost:3000/signout-oidc",
+  redirect_uri: "https://localhost:3000/signin-oidc",
+  response_type: "id_token token doughnutapi",
+  scope: "openid profile",
+  post_logout_redirect_uri: "https://localhost:3000/signout-oidc",
 };
 
 const userManager = new UserManager(config)
@@ -23,7 +23,15 @@ export async function loadUserFromStorage(store) {
   }
 }
 
+export function getSigninRedirectUrl() {
+  return userManager.createSigninRequest({ state: { bar: 15 } }).then(req => {
+    console.log('signinRedirect request', req, req.url)
+    return req.url
+  })
+}
+
 export function signinRedirect() {
+ 
   return userManager.signinRedirect()
 }
 
